@@ -1,0 +1,6 @@
+#ifndef CSE3PSD_ASSIGNMENT3_INTERVAL_H
+#define CSE3PSD_ASSIGNMENT3_INTERVAL_H
+class Interval
+{};
+
+#endif

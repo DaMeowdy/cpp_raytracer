@@ -1,0 +1,6 @@
+#ifndef CSE3PSD_ASSIGNMENT3_MATERIAL_H
+#define CSE3PSD_ASSIGNMENT3_MATERIAL_H
+class Material
+{};
+
+#endif

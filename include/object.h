@@ -1,0 +1,6 @@
+#ifndef CSE3PSD_ASSIGNMENT3_OBJECT_H
+#define CSE3PSD_ASSIGNMENT3_OBJECT_H
+class Object
+{};
+
+#endif

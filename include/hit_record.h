@@ -1,0 +1,6 @@
+#ifndef CSE3PSD_ASSIGNMENT3_HIT_RECORD_H
+#define CSE3PSD_ASSIGNMENT3_HIT_RECORD_H
+class HitRecord
+{};
+
+#endif
