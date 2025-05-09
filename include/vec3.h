@@ -29,7 +29,7 @@ class Vec3
   // Will need to read the definitions to figure out what these methods are so I can leave a more insightful comment
   double Dot(const Vec3& otherVector) const;
   Vec3 Cross(const Vec3 otherVector) const;
-  double Length_squared() const;  
+  double Length_Squared() const;  
   double Length() const;
   Vec3 UnitVector() const;
   bool NearZero(double epsilon = 1e-8) const;

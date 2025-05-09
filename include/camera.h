@@ -6,8 +6,8 @@
 class Camera
 {
   public: 
-
-
+  Camera(const Point3& inCameraPosition = Vec3(0,0,0),const Point3& inImagePlaneCentre = Vec3(0,0,0), double inImageHeight = 512, double inAspectRatio =1);
+  Ray GetRay(double inX, double inY);
   private:
   Point3 cameraCentre_ {0.0,0.0,0.0};
   Point3 pixel00_ {0.0, 0.0, 0.0};
