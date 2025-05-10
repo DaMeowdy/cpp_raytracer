@@ -144,6 +144,7 @@ Vec3 Vec3::RandomInRange(double minimum, double maximum)
   double random_y = RandomDouble(minimum, maximum);
   double random_z = RandomDouble(minimum, maximum);
   random_vector = {random_x, random_y, random_z};
+  return random_vector;
 }
 Vec3 Vec3::RandomInUnitSphere()
 {
