@@ -7,7 +7,7 @@ Colour3 Colour3::operator*(double scale) const
 
   return {scaled_r, scaled_g, scaled_b};
 }
-Colour3 operator*(double scale, Colour3& colourVector)
+Colour3 operator*(double scale, const Colour3& colourVector)
 {
   Colour3 scaled_colour_vector = colourVector * scale;
   return scaled_colour_vector;

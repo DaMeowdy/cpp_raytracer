@@ -9,7 +9,7 @@ class Colour3 {
     int G() const {return int(this->rgbScale*colourVector_.Y());};
     int B() const {return int(this->rgbScale*colourVector_.Z());};
     Colour3 operator*(double scale) const;
-    friend Colour3 operator*(double scale, Colour3& colourVector);
+    friend Colour3 operator*(double scale, const Colour3& colourVector);
     Colour3 operator+(const Colour3 otherColour) const;
     private:
     double rgbScale = 255.999;

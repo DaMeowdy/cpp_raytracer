@@ -11,6 +11,9 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "include/ray.h"
     "include/scene.h"
     "include/vec3.h"
+    "include/renderer.h"
+    "include/renderer_parameters.h"
+    "include/progress_bar.h"
     "lib/camera.cpp"
     "lib/colour3.cpp"
     "lib/helper_functions.cpp"
@@ -18,6 +21,9 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "lib/ray.cpp"
     "lib/scene.cpp"
     "lib/vec3.cpp"
+    "lib/renderer.cpp"
+    "lib/renderer_parameters.cpp"
+    "lib/progress_bar.cpp"
     "main.cpp"
 )
 
