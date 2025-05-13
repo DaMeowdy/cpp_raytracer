@@ -5,6 +5,7 @@
 class RendererParameters 
 {
   public:
+  RendererParameters();
   static RendererParameters defaultParameters();
   int ImageWidth();
   int ImageHeight();

@@ -8,15 +8,15 @@
 class Renderer
 {
   public: 
-  Renderer();
+  Renderer():scene_{Scene(nullptr)}{};
   int Render();
   void Setup();
-  Colour3 RayColor(const Ray& r);
+  Colour3 RayColour(const Ray& ray);
   private:
   RendererParameters rendererParameters_ {};
   std::ofstream outFile_;
   Camera camera_;
-  // Scene scene_;
+  Scene scene_;
   ProgressBar progressBar_;
 
 };

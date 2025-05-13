@@ -27,3 +27,12 @@ std::optional<HitRecord> Scene::RayHit(const Ray& ray, Interval rayInterval) con
   }
   return hit_anything?std::optional<HitRecord>{temporary_hit_record}:std::nullopt;
 }
+Colour3 Scene::RayColour(const Ray& ray)
+{
+  Vec3 unit_direction = ray.Direction().UnitVector();
+  double lerp_factor = 0.5 * (unit_direction.Y() + 1.0);
+  Colour3 white = Colour3(1.0, 1.0, 1.0);
+  Colour3 blue = Colour3(0.5, 0.7, 1.0);
+  return ((1.0 - lerp_factor) * white) + (lerp_factor * blue);
+}
+

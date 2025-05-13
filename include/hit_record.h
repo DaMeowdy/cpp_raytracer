@@ -6,6 +6,8 @@
 class HitRecord
 {
   public:
+  HitRecord(){};
+  HitRecord(Point3 inHitPoint, Vec3 inSurfaceNormal, double inDistanceAlongRay, bool inFrontFace):hitPoint_{inHitPoint},surfaceNormal_{inSurfaceNormal},distanceAlongRay_{inDistanceAlongRay},frontFace_{inFrontFace}{};
   Point3 HitPoint() const {return this->hitPoint_;}
   Vec3 SurfaceNormal() const{ return this->surfaceNormal_;}
   double DistanceAlongRay() const {return this->distanceAlongRay_;}

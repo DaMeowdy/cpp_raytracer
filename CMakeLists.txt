@@ -9,6 +9,8 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "include/helper_functions.h"
     "include/interval.h"
     "include/ray.h"
+    "include/object.h"
+    "include/sphere.h"
     "include/scene.h"
     "include/vec3.h"
     "include/renderer.h"
@@ -24,6 +26,7 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "lib/renderer.cpp"
     "lib/renderer_parameters.cpp"
     "lib/progress_bar.cpp"
+    "lib/sphere.cpp"
     "main.cpp"
 )
 
