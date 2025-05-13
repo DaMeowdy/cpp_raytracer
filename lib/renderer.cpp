@@ -15,13 +15,13 @@ int Renderer::Render()
   int image_height = this->rendererParameters_.ImageHeight();
   std::string out_file_name = this->rendererParameters_.OutputFileName();
   std::ofstream out_file(out_file_name);
-
+  std::cout << "checking if file is open" <<std::endl;
   if(!out_file.is_open())
   {
     std::cerr << "Error : unable to open file :C" << std::endl;
     return 1;
   }
-
+  std::cout << "file is open";
   out_file << "P3\n" << image_width << " " << image_height << "\n255\n";
   for(int i = 0; i<image_height; ++i)
   {
@@ -40,9 +40,11 @@ int Renderer::Render()
 }
 Colour3 Renderer::RayColour(const Ray& ray)
 {
+  std::cout <<"ray colour starts" <<std::endl;
   Interval interval(0.001, INFINITY_);
   if(auto hit = this->scene_.RayHit(ray, interval))
   {
+    std::cout << "scene works" << std::endl;
     Vec3 normal = hit->SurfaceNormal().UnitVector();
     return 0.5 * Colour3(normal.X() + 1.0, normal.Y() + 1.0, normal.Z() + 1.0);
   }
