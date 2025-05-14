@@ -7,7 +7,7 @@ void Scene::Add(Object* object)
 {
   this->objects_.push_back(object);
 }
-void Scene::Clear()
+void Scene::Clear()    
 {
   this->objects_.clear();
 }
