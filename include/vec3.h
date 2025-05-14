@@ -1,6 +1,7 @@
 #ifndef CSE3PSD_ASSIGNMENT_3_RAYTRACER_VEC3_H
 #define CSE3PSD_ASSIGNMENT_3_RAYTRACER_VEC3_H
 #include <ostream>
+#include "helper_functions.h"
 class Vec3 
 {
   public:
