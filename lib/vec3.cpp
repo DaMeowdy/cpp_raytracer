@@ -46,12 +46,12 @@ Vec3 Vec3::operator/(double scale) const
   Vec3 divided_vector =  *this * scale_value;
   return divided_vector;
 }
-Vec3 operator*(double scale, Vec3& otherVector)
+Vec3 operator*(double scale, const Vec3& otherVector)
 {
   Vec3 scaled_vector = otherVector * scale;
   return scaled_vector;
 }
-Vec3 operator/(double scale, Vec3& otherVector)
+Vec3 operator/(double scale, const Vec3& otherVector)
 {
   double scale_value = (1/scale);
   Vec3 divided_vector = otherVector * scale;

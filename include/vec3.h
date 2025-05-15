@@ -18,8 +18,8 @@ class Vec3
   Vec3 operator+(const Vec3 otherVector) const;
   Vec3 operator*(double scaler) const;
   Vec3 operator/(double scale) const;
-  friend Vec3 operator*(double scale, Vec3& otherVector);
-  friend Vec3 operator/(double scale, Vec3& otherVector);
+  friend Vec3 operator*(double scale, const Vec3& otherVector);
+  friend Vec3 operator/(double scale, const Vec3& otherVector);
   Vec3& operator+=(const Vec3& inVector);
   Vec3& operator*=(double scale);
   Vec3& operator/=(double scale);
