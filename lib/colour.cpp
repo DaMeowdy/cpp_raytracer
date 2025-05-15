@@ -8,9 +8,9 @@ void WriteColour(std::ostream &out, Colour3 inPixelColour)
   int B = static_cast<int>(RGBScaler*inPixelColour.Z());
   out << R << ' ' << G << ' ' << B << '\n';
 }
-Colour3 GetColour(const Vec3& inputVector)
+Colour3 GetColour(const Ray& ray)
 {
-  Vec3 unit_direction = inputVector.UnitVector();
+  Vec3 unit_direction = ray.Direction().UnitVector();
   auto t = 0.5*(unit_direction.Y()+1.0);
   return (1.0-t)*Colour3(1.0,1.0,1.0)+t*Colour3(0.5,0.7,1.0);
 }
