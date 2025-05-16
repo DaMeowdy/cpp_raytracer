@@ -3,7 +3,7 @@
 #include "hit_record.h"
 #include "ray.h"
 #include "interval.h"
-
+#include "material.h"
 class Object 
 {
   public: 

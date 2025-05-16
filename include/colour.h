@@ -4,6 +4,7 @@
 #include <ostream>
 #include "vec3.h"
 #include "scene.h"
+double LinearValueToGamme(double LinearComponent);
 void WriteColour(std::ostream &out, Colour3 inPixelColour);
 Colour3 RayColour(const Ray& ray, int depth, const Scene& scene);
 #endif

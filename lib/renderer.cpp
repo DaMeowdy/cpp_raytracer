@@ -6,7 +6,8 @@
 #include <filesystem>
 #include "../include/sphere.h"
 #include "../include/scene.h"
-
+#include "../include/pure_diffuse.h"
+#include "../include/reflective.h"
 std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 {
   std::stringstream string_stream;
@@ -15,8 +16,10 @@ std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 }
 int Renderer::RenderImage()
 {
-  auto s = std::make_shared<Sphere>(Point3(0.0,0.0,-1.0),.5);
-  auto s2 = std::make_shared<Sphere>(Point3(0,-100.5,-1.0),100);
+
+
+  auto s = std::make_shared<Sphere>(Point3(0.0,0.0,-1.0),.5, Colour3(0.7,0.2,0.1),PURE_DIFFUSE);
+  auto s2 = std::make_shared<Sphere>(Point3(0,-100.5,-1.0),100,Colour3(0.5,0.5,0.5),REFLECTIVE);
   Scene scene;
   scene.Add(s);
   scene.Add(s2);

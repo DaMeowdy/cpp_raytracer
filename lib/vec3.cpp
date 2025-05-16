@@ -76,6 +76,24 @@ Vec3& Vec3::operator/=(double scale)
   double scale_value = (1/scale);
   return *this *= scale_value;
 }
+
+Vec3 Vec3::operator*(const Vec3 secondVector) const
+{
+  double scaled_x = this->X() * secondVector.X();
+  double scaled_y = this->Y() * secondVector.Y();
+  double scaled_z = this->Z() * secondVector.Z();
+  Vec3 scaled_vector = {scaled_x, scaled_y, scaled_z};
+  return scaled_vector;
+}
+
+Vec3 operator*(Vec3& firstVector,Vec3& secondVector)
+{
+  Vec3 scaled_vector = firstVector*secondVector;
+  return scaled_vector;
+}
+
+
+
 std::ostream& operator<<(std::ostream outputStream,const Vec3& vector){
   return outputStream << vector.X() << ' ' << vector.Y() << ' ' << vector.Z();
 }
