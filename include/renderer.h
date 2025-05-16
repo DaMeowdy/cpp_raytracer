@@ -12,7 +12,7 @@ class Renderer
   private:
   Image image_;
   Camera camera_;
-  int maximum_recursion_depth = 10;
+  int maximum_recursion_depth = 50;
 };
 #endif
 
