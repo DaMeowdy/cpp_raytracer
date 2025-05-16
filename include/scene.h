@@ -6,7 +6,7 @@
 class Scene: public Object 
 {
   public:
-  bool Hit(const Ray& ray, double t_min, double t_max, HitRecord& rec) const override;
+  bool Hit(const Ray& ray, Interval ray_t, HitRecord& rec) const override;
   Scene(){}
   Scene(std::shared_ptr<Object> object);
   void Clear();

@@ -11,7 +11,7 @@ void WriteColour(std::ostream &out, Colour3 inPixelColour)
 Colour3 RayColour(const Ray& ray, const Scene& scene)
 {
   HitRecord rec;
-  if(scene.Hit(ray, 0.001, INFINITY_,rec))
+  if(scene.Hit(ray, Interval(0.001, INFINITY_),rec))
   {
     return 0.5*(rec.normal+Colour3(1.0,1.0,1.0));
   }

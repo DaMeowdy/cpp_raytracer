@@ -1,5 +1,5 @@
 #include "../include/sphere.h"
-bool Sphere::Hit(const Ray& ray, double t_min,double t_max,HitRecord& rec) const
+bool Sphere::Hit(const Ray& ray, Interval ray_t,HitRecord& rec) const
 {
   Vec3 oc = ray.Origin() - this->center_;
   auto a = ray.Direction().Length_Squared();
@@ -12,7 +12,7 @@ bool Sphere::Hit(const Ray& ray, double t_min,double t_max,HitRecord& rec) const
   }
   auto sqrtd = std::sqrt(discriminant);
   auto root = (-half_b - sqrtd)/a;
-  if (root <t_min||t_max<root)
+  if (!ray_t.Surrounds(root))
   {
     return false;
   }
