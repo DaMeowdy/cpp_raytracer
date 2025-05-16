@@ -1,19 +1,25 @@
 #include "../include/sphere.h"
-double Sphere::HitSphere(const Ray& ray)
+bool Sphere::Hit(const Ray& ray, double t_min,double t_max,HitRecord& rec) const
 {
   Vec3 oc = ray.Origin() - this->center_;
   auto a = ray.Direction().Length_Squared();
   auto half_b = oc.Dot(ray.Direction());
   auto c = oc.Length_Squared()- this->radius_*this->radius_;
   auto discriminant = half_b*half_b -a*c;
-  if(discriminant<0)
+  if(discriminant<0) 
   {
-    return -1.0;
+    return false;
   }
-  else
+  auto sqrtd = std::sqrt(discriminant);
+  auto root = (-half_b - sqrtd)/a;
+  if (root <t_min||t_max<root)
   {
-    return (-half_b-std::sqrt(discriminant))/a;
+    return false;
   }
+  rec.t = root;
+  rec.p = ray.At(rec.t);
+  rec.normal = (rec.p - this->center_)/this->radius_;
+  return true;
 }
 Point3 Sphere::Center() const
 {

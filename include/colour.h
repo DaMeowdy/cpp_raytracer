@@ -3,6 +3,7 @@
 #include "ray.h"
 #include <ostream>
 #include "vec3.h"
+#include "scene.h"
 void WriteColour(std::ostream &out, Colour3 inPixelColour);
-Colour3 GetColour(const Ray& ray);
+Colour3 RayColour(const Ray& ray, const Scene& scene);
 #endif

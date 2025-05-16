@@ -5,6 +5,7 @@
 #include <iostream>
 #include <filesystem>
 #include "../include/sphere.h"
+#include "../include/scene.h"
 
 std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 {
@@ -14,7 +15,9 @@ std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 }
 int Renderer::RenderImage()
 {
-  Sphere s(Point3(0.0,0.0,-1.0),.5);
+  auto s = std::make_shared<Sphere>(Point3(0.0,0.0,-1.0),.5);
+  Scene scene;
+  scene.Add(s);
   Image* image_parameters = &this->image_;
 
   std::ofstream outfile(image_parameters->OutputFileName());
@@ -31,21 +34,11 @@ int Renderer::RenderImage()
     {
       double u = double(j)/(image_parameters->ImageWidth()-1);
       double v = double(i)/(image_parameters->ImageHeight()-1);
-      Ray ray(camera_.Origin(), camera_.LowerLeftCorner()+camera_.Horizontal()*u+camera_.Vertical()*v-camera_.Origin());
-
-      auto t = s.HitSphere(ray);
-      Colour3 pixel_colour;
-      if(t>0.0)
-      {
-        Point3 p(ray.At(t));
-        Vec3 temp = p-s.Center();
-        Vec3 un = temp.UnitVector();
-        pixel_colour = 0.5*Colour3(un.X()+1,un.Y()+1,un.Z()+1);
-      }
-      else
-      {
-        pixel_colour = GetColour(ray);
-      }
+      Vec3 ray_direction = (camera_.LowerLeftCorner()+camera_.Horizontal()*u+camera_.Vertical()*v-camera_.Origin());
+      
+      Ray ray(camera_.Origin(), ray_direction);
+      
+      Colour3 pixel_colour = RayColour(ray, scene);
       WriteColour(outfile, pixel_colour);
     }
   }
