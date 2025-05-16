@@ -8,11 +8,12 @@ void WriteColour(std::ostream &out, Colour3 inPixelColour)
   int B = static_cast<int>(RGBScaler*inPixelColour.Z());
   out << R << ' ' << G << ' ' << B << '\n';
 }
-Colour3 RayColour(const Ray& ray, const Scene& scene)
+Colour3 RayColour(const Ray& ray, int depth, const Scene& scene)
 {
   HitRecord rec;
-  if(scene.Hit(ray, Interval(0.001, INFINITY_),rec))
+  if(scene.Hit(ray, Interval(0, INFINITY_),rec))
   {
+    
     return 0.5*(rec.normal+Colour3(1.0,1.0,1.0));
   }
   Vec3 unit_direction = ray.Direction().UnitVector();

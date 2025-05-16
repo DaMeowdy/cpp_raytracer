@@ -5,5 +5,5 @@
 #include "vec3.h"
 #include "scene.h"
 void WriteColour(std::ostream &out, Colour3 inPixelColour);
-Colour3 RayColour(const Ray& ray, const Scene& scene);
+Colour3 RayColour(const Ray& ray, int depth, const Scene& scene);
 #endif

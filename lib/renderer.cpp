@@ -16,8 +16,10 @@ std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 int Renderer::RenderImage()
 {
   auto s = std::make_shared<Sphere>(Point3(0.0,0.0,-1.0),.5);
+  auto s2 = std::make_shared<Sphere>(Point3(0,-100.5,-1.0),100);
   Scene scene;
   scene.Add(s);
+  scene.Add(s2);
   Image* image_parameters = &this->image_;
 
   std::ofstream outfile(image_parameters->OutputFileName());
@@ -38,7 +40,7 @@ int Renderer::RenderImage()
       
       Ray ray(camera_.Origin(), ray_direction);
       
-      Colour3 pixel_colour = RayColour(ray, scene);
+      Colour3 pixel_colour = RayColour(ray,this->maximum_recursion_depth, scene);
       WriteColour(outfile, pixel_colour);
     }
   }
