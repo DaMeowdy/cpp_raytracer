@@ -1,14 +1,15 @@
-#include "../include/renderer.h"
-#include "../include/colour.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <filesystem>
-#include "../include/sphere.h"
 #include "../include/scene.h"
-#include "../include/pure_diffuse.h"
-#include "../include/reflective.h"
 #include "../include/plane.h"
+#include "../include/sphere.h"
+#include "../include/colour.h"
+#include "../include/renderer.h"
+#include "../include/reflective.h"
+#include "../include/pure_diffuse.h"
+#include "../include/progress_bar.h"
 std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 {
   std::stringstream string_stream;
@@ -42,13 +43,28 @@ int Renderer::RenderImage()
     return 1;
   }
   outfile << this->FileHeader(image_parameters->ImageWidth(),image_parameters->ImageHeight());
+  ProgressBar bar(image_parameters->ImageHeight());
   for(int i = image_parameters->ImageHeight()-1;i>=0;--i)
   {
-    std::cerr << "remaining lines : " << i << '\n';
+    bar.Update(image_parameters->ImageHeight() - i);
     for(int j =0;j<image_parameters->ImageWidth();++j)
     {
       Colour3 pixel_colour(0.0,0.0,0.0);
-      for(int sample =0; sample<this->sample_rate; ++sample)
+      if(this->anti_aliasing_on_)
+      {
+        for(int sample =0; sample<this->sample_rate; ++sample)
+        {
+          double u = double(j)/(image_parameters->ImageWidth()-1);
+          double v = double(i)/(image_parameters->ImageHeight()-1);
+          Vec3 ray_direction = (camera_.LowerLeftCorner()+camera_.Horizontal()*u+camera_.Vertical()*v-camera_.Origin());
+          
+          Ray ray(camera_.Origin(), ray_direction.UnitVector());
+          
+          pixel_colour += RayColour(ray,this->maximum_recursion_depth, scene);
+          pixel_colour /= (double)this->sample_rate;
+        }
+      }
+      else
       {
         double u = double(j)/(image_parameters->ImageWidth()-1);
         double v = double(i)/(image_parameters->ImageHeight()-1);
@@ -56,13 +72,15 @@ int Renderer::RenderImage()
         
         Ray ray(camera_.Origin(), ray_direction.UnitVector());
         
-        pixel_colour += RayColour(ray,this->maximum_recursion_depth, scene);
+        pixel_colour = RayColour(ray,this->maximum_recursion_depth, scene);
       }
-      pixel_colour /= (double)this->sample_rate;
+
       WriteColour(outfile, pixel_colour);
     }
   }
+  bar.Done();
   std::string path = std::filesystem::absolute(image_parameters->OutputFileName()).string();
   std::cout << " RAYTRACING COMPLETE \n File available at " << path << '\n';
   return 0;
 }
+

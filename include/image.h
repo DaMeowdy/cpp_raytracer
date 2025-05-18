@@ -4,6 +4,7 @@
 class Image
 {
   public:
+  Image(){}
   Image(std::string inFileName, int inImageWidth, int inImageHeight, double inAspectRatio):output_filename_{inFileName},image_width_{inImageWidth},aspect_ratio_{inAspectRatio},image_height_{inImageHeight}{}
   std::string OutputFileName() const;
   int ImageHeight() const;

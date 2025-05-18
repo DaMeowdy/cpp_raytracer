@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.20)
 project(CSE3PSD_Assignment_3_21985164)
 
 set(CMAKE_CXX_STANDARD 23)
-
 add_executable(CSE3PSD_Assignment_3_21985164
     "include/vec3.h"
     "include/renderer.h"
@@ -17,6 +16,7 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "include/interval.h"
     "include/hit_record.h"
     "include/reflective.h"
+    "include/progress_bar.h"
     "include/pure_diffuse.h"
     "include/material.h"
     "include/plane.h"
@@ -26,6 +26,7 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "lib/reflective.cpp"
     "lib/interval.cpp"
     "lib/vec3.cpp"
+    "lib/progress_bar.cpp"
     "lib/sphere.cpp"
     "lib/scene.cpp"
     "lib/camera.cpp"

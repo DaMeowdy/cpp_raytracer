@@ -1,0 +1,13 @@
+{
+  "image": {
+    "height":512,
+    "width":512,
+    "output":"21985164_RAY_TRACED_IMAGE.ppm"
+  },
+  "renderer":
+  {
+    "max_depth":100,
+    "pixel_samples":50,
+    "anti_aliasing":true
+  }
+}

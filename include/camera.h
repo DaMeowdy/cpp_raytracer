@@ -4,6 +4,7 @@
 class Camera
 {
   public:
+  Camera(){}
   Camera(double inAspectRatio);
   double ViewportWidth() const;
   double ViewportHeight() const;

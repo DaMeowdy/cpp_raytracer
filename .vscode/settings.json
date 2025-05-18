@@ -64,6 +64,18 @@
     "xlocbuf": "cpp",
     "xlocmes": "cpp",
     "xlocmon": "cpp",
-    "xloctime": "cpp"
+    "xloctime": "cpp",
+    "any": "cpp",
+    "array": "cpp",
+    "codecvt": "cpp",
+    "functional": "cpp",
+    "map": "cpp",
+    "numeric": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "unordered_map": "cpp",
+    "valarray": "cpp",
+    "xhash": "cpp",
+    "xtree": "cpp"
   }
 }
