@@ -25,14 +25,14 @@ int Renderer::RenderImage()
     Colour3(0.7, 0.7, 0.7),    
     REFLECTIVE
 );
-  auto s = std::make_shared<Sphere>(Point3(-1.25,0.0,-2.0),.5, Colour3(0.7,0.2,0.1),PURE_DIFFUSE);
-  auto s2 = std::make_shared<Sphere>(Point3(1.25,0.0,-2.0),.5,Colour3(0.2,0.1,0.7),PURE_DIFFUSE);
+  auto s = std::make_shared<Sphere>(Point3(-1.25,0.0,-3.0),.75, Colour3(0.7,0.2,0.1),PURE_DIFFUSE);
+  auto s2 = std::make_shared<Sphere>(Point3(1.25,0.0,-2.0),.25,Colour3(0.2,0.1,0.7),PURE_DIFFUSE);
   auto s3 = std::make_shared<Sphere>(Point3(0,0.0,-2.0),.5,Colour3(0.1,0.7,0.2),PURE_DIFFUSE);
   
   Scene scene;
   scene.Add(p);
-  // scene.Add(s);
-  // scene.Add(s2);
+  scene.Add(s);
+  scene.Add(s2);
   scene.Add(s3);
   Image* image_parameters = &this->image_;
 
