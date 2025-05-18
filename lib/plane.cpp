@@ -16,9 +16,15 @@ double denom = this->PlaneNormal().Dot(ray.Direction());
 
     rec.t = t;
     rec.p = ray.At(t);
-    rec.normal = this->plane_normal_;
+    rec.SetFaceNormal(ray, this->plane_normal_);
     rec.attenuation = this->colour_;
     rec.direction = this->material_->ReflectLight(rec,ray);
+    
+    if(rec.direction.NearZero())
+    {
+      rec.direction = rec.direction = rec.normal;
+    }
+    rec.scattered = Ray(rec.p, rec.direction);
     return true;
 }
 Point3 Plane::Point() const

@@ -11,6 +11,12 @@ class HitRecord
     Colour3 attenuation;
     Ray scattered;
     Vec3 direction;
+    bool frontFace;
+    void SetFaceNormal(const Ray& ray, const Vec3& outwardNormal) {
+      frontFace = ray.Direction().Dot(outwardNormal) < 0;
+      normal = frontFace ? outwardNormal : -outwardNormal;
+    }
+
 };
 
 

@@ -18,20 +18,20 @@ std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 int Renderer::RenderImage()
 {
 
-//   auto p = std::make_shared<Plane>(
-//     Point3(0.0, -0.5, -1.0),   
-//     Vec3(0, 1, 0),             
-//     Colour3(0.0, 0.0, 0.0),    
-//     REFLECTIVE
-// );
+  auto p = std::make_shared<Plane>(
+    Point3(0.0, -0.5, -1.0),   
+    Vec3(0, 1, 0),             
+    Colour3(0.7, 0.7, 0.7),    
+    REFLECTIVE
+);
   auto s = std::make_shared<Sphere>(Point3(-1.25,0.0,-2.0),.5, Colour3(0.7,0.2,0.1),PURE_DIFFUSE);
   auto s2 = std::make_shared<Sphere>(Point3(1.25,0.0,-2.0),.5,Colour3(0.2,0.1,0.7),PURE_DIFFUSE);
   auto s3 = std::make_shared<Sphere>(Point3(0,0.0,-2.0),.5,Colour3(0.1,0.7,0.2),PURE_DIFFUSE);
   
   Scene scene;
-  // scene.Add(p);
-  scene.Add(s);
-  scene.Add(s2);
+  scene.Add(p);
+  // scene.Add(s);
+  // scene.Add(s2);
   scene.Add(s3);
   Image* image_parameters = &this->image_;
 
@@ -54,7 +54,7 @@ int Renderer::RenderImage()
         double v = double(i)/(image_parameters->ImageHeight()-1);
         Vec3 ray_direction = (camera_.LowerLeftCorner()+camera_.Horizontal()*u+camera_.Vertical()*v-camera_.Origin());
         
-        Ray ray(camera_.Origin(), ray_direction);
+        Ray ray(camera_.Origin(), ray_direction.UnitVector());
         
         pixel_colour += RayColour(ray,this->maximum_recursion_depth, scene);
       }

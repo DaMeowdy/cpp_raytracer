@@ -12,7 +12,7 @@ class Renderer
   private:
   Image image_;
   Camera camera_;
-  int maximum_recursion_depth = 100;
+  int maximum_recursion_depth = 25;
   int sample_rate = 100;
 };
 #endif

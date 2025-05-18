@@ -21,6 +21,10 @@ bool Sphere::Hit(const Ray& ray, Interval ray_t,HitRecord& rec) const
   rec.normal = (rec.p - this->center_)/this->radius_;
   rec.attenuation = this->colour_;
   Vec3 direction = this->material_->ReflectLight(rec, ray);
+  if(direction.NearZero())
+  {
+    direction = direction = rec.normal;
+  }
   rec.scattered = Ray(rec.p, direction);
   return true;
 }
