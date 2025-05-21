@@ -18,7 +18,10 @@ std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 }
 int Renderer::RenderImage()
 {
-
+  if(!this->isConfigured_)
+  {
+    return 1;
+  }
   auto p = std::make_shared<Plane>(
     Point3(0.0, -0.5, -1.0),   
     Vec3(0, 1, 0),             
@@ -52,7 +55,7 @@ int Renderer::RenderImage()
       Colour3 pixel_colour(0.0,0.0,0.0);
       if(this->anti_aliasing_on_)
       {
-        for(int sample =0; sample<this->sample_rate; ++sample)
+        for(int sample =0; sample<this->sample_rate_; ++sample)
         {
           double u = double(j)/(image_parameters->ImageWidth()-1);
           double v = double(i)/(image_parameters->ImageHeight()-1);
@@ -60,8 +63,8 @@ int Renderer::RenderImage()
           
           Ray ray(camera_.Origin(), ray_direction.UnitVector());
           
-          pixel_colour += RayColour(ray,this->maximum_recursion_depth, scene);
-          pixel_colour /= (double)this->sample_rate;
+          pixel_colour += RayColour(ray,this->maximum_recursion_depth_, scene);
+          pixel_colour /= (double)this->sample_rate_;
         }
       }
       else
@@ -72,7 +75,7 @@ int Renderer::RenderImage()
         
         Ray ray(camera_.Origin(), ray_direction.UnitVector());
         
-        pixel_colour = RayColour(ray,this->maximum_recursion_depth, scene);
+        pixel_colour = RayColour(ray,this->maximum_recursion_depth_, scene);
       }
 
       WriteColour(outfile, pixel_colour);
@@ -83,4 +86,10 @@ int Renderer::RenderImage()
   std::cout << " RAYTRACING COMPLETE \n File available at " << path << '\n';
   return 0;
 }
-
+void Renderer::Configure(int inDepth,int inSampleRate,bool inAntiAliasing)
+{
+  this->anti_aliasing_on_ = inAntiAliasing;
+  this->maximum_recursion_depth_ = inDepth;
+  this->sample_rate_ = inSampleRate;
+  this->isConfigured_ = true;
+}

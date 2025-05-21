@@ -9,13 +9,14 @@ class Renderer
   Renderer(std::string inFileName, int inImageWidth,int inImageHeight, double inAspectRatio):image_{Image(inFileName,inImageWidth,inImageHeight,inAspectRatio)},camera_(inAspectRatio){}
   std::string FileHeader(int inImageWidth, int inImageHeight);
   int RenderImage();
-  void Configure();
+  void Configure(int inDepth,int inSampleRate,bool inAntiAliasing);
   private:
   Image image_;
   Camera camera_;
-  int maximum_recursion_depth = 150;
-  int sample_rate = 100;
-  bool anti_aliasing_on_ = true;
+  int maximum_recursion_depth_ = 0;
+  int sample_rate_ = 0;
+  bool anti_aliasing_on_ = false;
+  bool isConfigured_ = false;
 };
 #endif
 
