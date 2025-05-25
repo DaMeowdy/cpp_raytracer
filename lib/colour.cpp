@@ -2,7 +2,7 @@
 
 double LinearValueToGamma(double LinearComponent)
 {
-  return std::sqrt(LinearComponent);
+  return std::sqrt(LinearComponent) ;
 }
 
 void WriteColour(std::ostream &out, Colour3 inPixelColour)
