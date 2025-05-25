@@ -1,15 +1,4 @@
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <filesystem>
-#include "../include/scene.h"
-#include "../include/plane.h"
-#include "../include/sphere.h"
-#include "../include/colour.h"
 #include "../include/renderer.h"
-#include "../include/reflective.h"
-#include "../include/pure_diffuse.h"
-#include "../include/progress_bar.h"
 std::string Renderer::FileHeader(int inImageWidth, int inImageHeight)
 {
   std::stringstream string_stream;
@@ -28,9 +17,9 @@ int Renderer::RenderImage()
     Colour3(0.7, 0.7, 0.7),    
     REFLECTIVE
 );
-  auto s = std::make_shared<Sphere>(Point3(-1.25,0.5,-3.0),.75, Colour3(0.7,0.2,0.1),PURE_DIFFUSE);
-  auto s2 = std::make_shared<Sphere>(Point3(1.25,0.5,-2.0),.25,Colour3(0.2,0.1,0.7),PURE_DIFFUSE);
-  auto s3 = std::make_shared<Sphere>(Point3(0,0.5,-2.0),.5,Colour3(0.1,0.7,0.2),PURE_DIFFUSE);
+  auto s = std::make_shared<Sphere>(Point3(-1.25,0.5,-3.0),.75, Colour3(0.7,0.2,0.1),HEAVY_GLOSSY);
+  auto s2 = std::make_shared<Sphere>(Point3(1.25,0.0,-2.0),.25,Colour3(0.2,0.1,0.7),MEDIUM_GLOSSY);
+  auto s3 = std::make_shared<Sphere>(Point3(0,0.0,-2.0),.5,Colour3(0.1,0.7,0.2),LIGHT_GLOSSY);
   
   Scene scene;
   scene.Add(p);

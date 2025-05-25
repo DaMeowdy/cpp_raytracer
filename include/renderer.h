@@ -1,6 +1,7 @@
-#include <string>
 #ifndef CSE3PSD_ASSIGNMENT_3_RAYTRACER_RENDERER_H
 #define CSE3PSD_ASSIGNMENT_3_RAYTRACER_RENDERER_H
+#include "rendering_engine_includes.h"
+#include <string>
 #include "image.h"
 #include "camera.h"
 class Renderer
