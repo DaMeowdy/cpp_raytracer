@@ -28,6 +28,12 @@ bool Sphere::Hit(const Ray& ray, Interval ray_t,HitRecord& rec) const
   rec.scattered = Ray(rec.p, direction);
   return true;
 }
+bool Sphere::BoundingBox(AABB& output_box) const
+{
+    Vec3 radius_vec(radius_, radius_, radius_);
+    output_box = AABB(center_ - radius_vec, center_ + radius_vec);
+    return true;
+}
 Point3 Sphere::Center() const
 {
   return this->center_;

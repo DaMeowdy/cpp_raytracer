@@ -7,6 +7,7 @@ class Plane: public Object
   public:
   Plane(Point3 inPoint, Vec3 inPlaneNormal, Colour3 inColour, std::shared_ptr<Material> inMaterial):point_(inPoint),plane_normal_(inPlaneNormal),colour_(inColour),material_(inMaterial){}
   bool Hit(const Ray& ray, Interval ray_t,HitRecord& rec) const override;
+  bool BoundingBox(AABB& output_box) const override;
   Point3 Point() const;
   Vec3 PlaneNormal() const;
   Colour3 Colour() const;

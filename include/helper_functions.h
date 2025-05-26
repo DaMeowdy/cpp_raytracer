@@ -12,5 +12,4 @@ double RandomDouble(double minimum, double maximum);
 double RandomDouble0to1();
 int RandomInt(int minimum, int maximum);
 int RandomInt0to255();
-
 #endif

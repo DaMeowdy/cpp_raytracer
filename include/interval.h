@@ -11,8 +11,9 @@ class Interval
   bool Contains(double x) const;
   bool Surrounds(double x) const;
   double ClampValue(double inputValue) const;
-  static double ClampValueToInterval(double inputValue, Interval inputInterval);
   static const Interval empty_interval,infinite_interval;
+  static Interval Surrounding(const Interval& a, const Interval& b);
+  static double ClampValueToInterval(double inputValue, Interval inputInterval);
 };
 const static Interval empty_interval {+INFINITY_,-INFINITY_};
 const static Interval infinite_interval {-INFINITY_, +INFINITY_};

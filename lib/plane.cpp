@@ -27,6 +27,14 @@ double denom = this->PlaneNormal().Dot(ray.Direction());
     rec.scattered = Ray(rec.p, rec.direction);
     return true;
 }
+bool Plane::BoundingBox(AABB& output_box) const
+{
+    output_box = AABB(
+        Point3(-1e6, point_.Y() - 0.001, -1e6),
+        Point3(1e6, point_.Y() + 0.001, 1e6)
+    );
+    return true;
+}
 Point3 Plane::Point() const
 {
   return this->point_;

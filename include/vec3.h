@@ -24,7 +24,9 @@ class Vec3
   friend Vec3 operator/(double scale, const Vec3& otherVector);
   Vec3& operator+=(const Vec3& inVector);
   Vec3& operator*=(double scale);
-  Vec3& operator/=(double scale);
+  Vec3& operator/=(double scale);\
+  double operator[](int i) const;
+  double& operator[](int i);
   friend std::ostream& operator<<(std::ostream outputStream,const Vec3& vector);
   // helper functions
   double Dot(const Vec3& otherVector) const;

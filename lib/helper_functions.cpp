@@ -13,7 +13,7 @@ double RadiansToDegrees(double Radians)
 double RandomDouble(double minimum, double maximum)
 {
   std::random_device random_device;
-  std::mt19937 generator(random_device());
+  thread_local static std::mt19937 generator(random_device());
   std::uniform_real_distribution<double> distribution(minimum, maximum);
   double random_double = distribution(generator);
   return random_double;
@@ -26,7 +26,7 @@ double RandomDouble0to1()
 int RandomInt(int minimum, int maximum)
 {
   std::random_device random_device;
-  std::mt19937 generator(random_device());
+  thread_local static std::mt19937 generator(random_device());
   std::uniform_int_distribution<int> distribution(minimum, maximum);
   int random_int = distribution(generator);
   return random_int;

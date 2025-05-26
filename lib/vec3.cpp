@@ -209,3 +209,20 @@ Vec3 Vec3::RandomOnHemisphere(const Vec3& normalVector)
   Vec3 ternary_output = ternary_condition ? random_unit_vector : -random_unit_vector;
   return ternary_output;
 }
+double Vec3::operator[](int i) const {
+    switch (i) {
+        case 0: return this->x_;
+        case 1: return this->y_;
+        case 2: return this->z_;
+        default: throw std::out_of_range("Vec3 subscript out of range");
+    }
+}
+
+double& Vec3::operator[](int i) {
+    switch (i) {
+        case 0: return this->x_;
+        case 1: return this->y_;
+        case 2: return this->z_;
+        default: throw std::out_of_range("Vec3 subscript out of range");
+    }
+}

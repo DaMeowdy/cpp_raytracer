@@ -43,3 +43,6 @@ double Interval::ClampValueToInterval(double inputValue, Interval inputInterval)
   double clamp_value = input_value_less_than_min?min:max;
   return clamp_value;
 }
+Interval Interval::Surrounding(const Interval& a, const Interval& b) {
+    return Interval(std::fmin(a.Min, b.Min), std::fmax(a.Max, b.Max));
+}

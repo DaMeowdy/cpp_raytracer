@@ -4,6 +4,7 @@ project(CSE3PSD_Assignment_3_21985164)
 set(CMAKE_CXX_STANDARD 23)
 add_executable(CSE3PSD_Assignment_3_21985164
     "include/ray.h"
+    "include/aabb.h"
     "include/vec3.h"
     "include/image.h"
     "include/plane.h"
@@ -16,6 +17,7 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "include/interval.h"
     "include/renderer.h"
     "include/material.h"
+    "include/bvh_node.h"
     "include/hit_record.h"
     "include/reflective.h"
     "include/progress_bar.h"
@@ -23,6 +25,7 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "include/helper_functions.h"
     "include/rendering_engine_includes.h"
     "lib/ray.cpp"
+    "lib/aabb.cpp"
     "lib/vec3.cpp"
     "lib/scene.cpp"
     "lib/plane.cpp"
@@ -31,6 +34,7 @@ add_executable(CSE3PSD_Assignment_3_21985164
     "lib/sphere.cpp"
     "lib/camera.cpp"
     "lib/colour.cpp"
+    "lib/bvh_node.cpp"
     "lib/renderer.cpp"
     "lib/interval.cpp"
     "lib/reflective.cpp"

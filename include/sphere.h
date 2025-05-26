@@ -10,6 +10,8 @@ class Sphere: public Object
   public:
   Sphere(Point3 inCenter, double inRadius, Colour3 inColour,std::shared_ptr<Material> inMaterial):center_{inCenter},radius_{inRadius},colour_{inColour},material_{inMaterial}{}
   bool Hit(const Ray& ray, Interval ray_t,HitRecord& rec) const override;
+  bool BoundingBox(AABB& output_box) const override;
+
   Point3 Center() const;
   double Radius() const;
   private:
